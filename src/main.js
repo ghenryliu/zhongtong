@@ -13,7 +13,8 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import i18n from './lang' // Internationalization
+import i18n from './lang' // Internationalization  用于显示 $t('login.title')
+
 import './icons' // icon
 import './errorLog' // error log
 import './permission' // permission control

@@ -7,7 +7,7 @@ Vue.use(Router)
 import Layout from '@/views/layout/Layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
+import componentsRouter from './modules/components' //  all come from fold views!!
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
@@ -44,11 +44,13 @@ export const constantRouterMap = [
       }
     ]
   },
+
   {
-    path: '/login',
+    path: '/login', // 主页面
     component: () => import('@/views/login/index'),
     hidden: true
   },
+
   {
     path: '/auth-redirect',
     component: () => import('@/views/login/authredirect'),
@@ -66,7 +68,7 @@ export const constantRouterMap = [
   },
   {
     path: '',
-    component: Layout,
+    component: Layout, // layout 下面dashboard ，coumentation,guide
     redirect: 'dashboard',
     children: [
       {
@@ -77,6 +79,7 @@ export const constantRouterMap = [
       }
     ]
   },
+
   {
     path: '/documentation',
     component: Layout,

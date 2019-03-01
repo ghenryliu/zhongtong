@@ -10,6 +10,7 @@ const app = {
     language: Cookies.get('language') || 'en',
     size: Cookies.get('size') || 'medium'
   },
+
   mutations: {
     TOGGLE_SIDEBAR: state => {
       state.sidebar.opened = !state.sidebar.opened

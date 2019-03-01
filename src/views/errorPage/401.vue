@@ -20,7 +20,8 @@
         <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream.">
       </el-col>
     </el-row>
-    <el-dialog :visible.sync="dialogVisible" title="随便看">
+    <el-dialog :visible.sync="dialogVisible" title="随便看">hello
+
       <img :src="ewizardClap" class="pan-img">
     </el-dialog>
   </div>
@@ -35,7 +36,7 @@ export default {
     return {
       errGif: errGif + '?' + +new Date(),
       ewizardClap: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
-      dialogVisible: false
+      dialogVisible: false // 动图显示与否
     }
   },
   methods: {

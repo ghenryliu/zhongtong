@@ -13,9 +13,11 @@ export default {
   name: 'AppMain',
   computed: {
     cachedViews() {
+      console.log('layout>>>Appmain>>>this.$store.state.tagsView.cachedViews', this.$store.state.tagsView.cachedViews)
       return this.$store.state.tagsView.cachedViews
     },
     key() {
+      console.log('layout>>>Appmain>>>this.$route.fullPath', this.$route.fullPath)
       return this.$route.fullPath
     }
   }
@@ -29,6 +31,7 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+  background-color: brown;
 }
 </style>
 

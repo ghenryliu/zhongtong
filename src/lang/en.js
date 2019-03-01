@@ -73,8 +73,8 @@ export default {
     size: 'Global Size'
   },
   login: {
-    title: 'Login Form',
-    logIn: 'Log in',
+    title: 'Login Form   "-in lang/en"',
+    logIn: 'Log in/登录',
     username: 'Username',
     password: 'Password',
     any: 'any',
