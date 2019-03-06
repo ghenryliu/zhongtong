@@ -1,72 +1,53 @@
 <template>
 <div class="mainpart">
   <div class="title">
-    <span>个人中心</span>
-    <span>修改密码</span>
+    <span>审核维修人员</span>
+    <!--<span>修改密码</span>-->
   </div>
   <div class="empty"></div>
-
   <div class="content">
     <div>
       <p><span>账号</span><input /></p>
-      <p><span>用户名</span><input /></p>
-      <p><span>手机号</span><input /></p>
+      <p><span>身份证号</span><input /></p>
+      <p><span>公司名称</span><input /></p>
+      <p><span>企业识别码</span><input /></p>
     </div>
     <div class="savebtn">保存</div>
   </div>
 
-  <!--<div :class="className" :id="id" :style="{height:height,width:width}"/>-->
+  <div v-if="isApprove">
+    <input value="请输入不通过原因"/>
+    <div><span>确定</span><span>取消</span></div>
+  </div>
+
+  <div v-if="isApprove">审核通过
+  </div>
+
 </div>
 </template>
-
 <script>
-import echarts from 'echarts'
-import resize from './mixins/resize'
+
 
 export default {
-  mixins: [resize],
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    id: {
-      type: String,
-      default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '200px'
-    },
-    height: {
-      type: String,
-      default: '200px'
+  data(){
+    return{
+      isApprove:'',
     }
-  },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    // this.initChart()
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
-  methods: {
 
   }
+
+
 }
 </script>
 
 <style>
 
   .mainpart{
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +55,7 @@ export default {
   }
 
   .title{
-
+    height: 4.38rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -118,6 +99,8 @@ export default {
     margin-bottom: 1rem;
   }
  .content{
+   height: 85%;
+   margin-bottom: 1.5rem;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -148,7 +131,7 @@ export default {
     margin-left: 2.7rem;
     margin-right:1.1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -168,6 +151,9 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
+
+
 
 
 </style>

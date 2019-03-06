@@ -27,8 +27,11 @@ export default {
 <style scoped>
 .app-main {
   /*84 = navbar + tags-view = 50 +34 */
-  min-height: calc(100vh - 84px);
-  width: 100%;
+  /*min-height: calc(100vh - 84px);*/
+  /*min-width:calc(100vw - 216px);*/
+  height:100vh;
+
+  /*height: 100%;*/    /*设置100% height 不现实！！！*/
   position: relative;
   overflow: hidden;
   background-color: brown;

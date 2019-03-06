@@ -66,7 +66,7 @@ export default {
     externalLink: 'External Link'
   },
   navbar: {
-    logOut: 'Log Out',
+    logOut: 'Log Out--defind in lang',
     dashboard: 'Dashboard',
     github: 'Github',
     theme: 'Theme',

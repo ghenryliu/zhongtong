@@ -1,72 +1,56 @@
 <template>
 <div class="mainpart">
   <div class="title">
-    <span>个人中心</span>
-    <span>修改密码</span>
+    <span>编辑管理员信息</span>
+    <span>重置密码</span>
   </div>
   <div class="empty"></div>
-
   <div class="content">
     <div>
       <p><span>账号</span><input /></p>
       <p><span>用户名</span><input /></p>
       <p><span>手机号</span><input /></p>
     </div>
-    <div class="savebtn">保存</div>
+    <div class="savebtn" @click="submit">保存</div>
   </div>
 
-  <!--<div :class="className" :id="id" :style="{height:height,width:width}"/>-->
+  <div v-if="saveSuccessful" class="msg">
+    <div>保存成功</div>
+    <div>重置密码成功</div>
+  </div>
+
+
+
 </div>
 </template>
-
 <script>
-import echarts from 'echarts'
-import resize from './mixins/resize'
+
 
 export default {
-  mixins: [resize],
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    id: {
-      type: String,
-      default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '200px'
-    },
-    height: {
-      type: String,
-      default: '200px'
+  data(){
+    return{
+      saveSuccessful:true
     }
   },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    // this.initChart()
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
-  methods: {
 
+  methods:{
+    submit(){
+      console.log("向服务器提交修改后的管理员信息")
+    }
   }
+
+
 }
 </script>
 
 <style>
 
   .mainpart{
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +58,7 @@ export default {
   }
 
   .title{
-
+    height: 4.38rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -118,6 +102,8 @@ export default {
     margin-bottom: 1rem;
   }
  .content{
+   height: 85%;
+   margin-bottom: 1.5rem;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -148,7 +134,7 @@ export default {
     margin-left: 2.7rem;
     margin-right:1.1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -168,6 +154,28 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
+  .msg{
+    position:absolute;
+    top:16.95rem;
+  }
+
+  .msg div{
+    background: rgba(51,51,51,0.50);
+    width: 15rem;
+    height: 3rem;
+    background: rgba(51,51,51,0.50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .msg div:first-child{
+    margin-bottom: 0.95rem;
+  }
+
+
+
 
 
 </style>

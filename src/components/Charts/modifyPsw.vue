@@ -1,72 +1,46 @@
 <template>
 <div class="mainpart">
   <div class="title">
-    <span>个人中心</span>
-    <span>修改密码</span>
+       <span>修改密码</span>
   </div>
   <div class="empty"></div>
 
   <div class="content">
     <div>
-      <p><span>账号</span><input /></p>
-      <p><span>用户名</span><input /></p>
-      <p><span>手机号</span><input /></p>
+      <p><span>原密码</span><input /></p>
+      <p><span>新密码</span><input /></p>
+      <p><span>确认新密码</span><input /></p>
     </div>
     <div class="savebtn">保存</div>
   </div>
 
-  <!--<div :class="className" :id="id" :style="{height:height,width:width}"/>-->
+  <div v-if="saveSuccessful" class="savesuccessful">保存成功</div>
+
+
 </div>
 </template>
 
 <script>
-import echarts from 'echarts'
-import resize from './mixins/resize'
+
 
 export default {
-  mixins: [resize],
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    id: {
-      type: String,
-      default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '200px'
-    },
-    height: {
-      type: String,
-      default: '200px'
-    }
-  },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    // this.initChart()
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
-  methods: {
 
+  data(){
+    return{
+      saveSuccessful:true
+    }
   }
+
 }
 </script>
 
 <style>
 
   .mainpart{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,6 +48,7 @@ export default {
   }
 
   .title{
+    height: 4.38rem;
 
     width: 100%;
     display: flex;
@@ -86,7 +61,7 @@ export default {
 
   }
 
-  .title >span:first-child{
+  .title >span{
     margin-left: 3rem;
     font-family: PingFangSC-Semibold;
     font-size: 1.6rem;
@@ -95,21 +70,7 @@ export default {
     line-height: 48px;
   }
 
-  .title >span:last-child{
-    margin-right: 2.3rem;
-    font-family: PingFangSC-Regular;
-    font-size: 0.7rem;
-    color: #000000;
-    letter-spacing: 0;
-    text-align: center;
-    line-height: 19px;
-    background-color:#F5A623 ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 6rem;
-    border-radius: 1.2rem;
-  }
+
 
   .empty{
     background-color: #fff;
@@ -118,6 +79,9 @@ export default {
     margin-bottom: 1rem;
   }
  .content{
+   height: 85%;
+   margin-bottom: 1.5rem;
+
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -143,12 +107,12 @@ export default {
   }
 
   .content >div:first-child>p>span{
-    width:3rem;
+    width:5rem;                      /*修改新密码的宽度*/
     height: 2rem;
     margin-left: 2.7rem;
     margin-right:1.1rem;
     display: flex;
-    justify-content: center;
+    justify-content:flex-end;
     align-items: center;
   }
 
@@ -169,5 +133,14 @@ export default {
     align-items: center;
   }
 
+  .savesuccessful{
+    position: absolute;
+    top:16.95rem;
+    height:3rem;
+    width:15rem;
+    background: rgba(51,51,51,0.50);
+    display: flex;
+    justify-content: center;
+    align-items: center;}
 
 </style>

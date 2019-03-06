@@ -1,72 +1,63 @@
 <template>
 <div class="mainpart">
   <div class="title">
-    <span>个人中心</span>
-    <span>修改密码</span>
+    <span>编辑管理员信息</span>
+
+    <router-link :to="'/zhongtong/modifyPsw/'">
+    <span class="btn1">重置密码</span>
+    </router-link>
   </div>
   <div class="empty"></div>
-
   <div class="content">
     <div>
       <p><span>账号</span><input /></p>
       <p><span>用户名</span><input /></p>
       <p><span>手机号</span><input /></p>
     </div>
-    <div class="savebtn">保存</div>
+    <div><span></span><span class="savebtn" @click="submit">保存</span></div>
   </div>
 
-  <!--<div :class="className" :id="id" :style="{height:height,width:width}"/>-->
+  <div v-if="saveSuccessful" class="msg">
+    <div>保存成功</div>
+    <div>重置密码成功</div>
+  </div>
+
+
+
 </div>
 </template>
-
 <script>
-import echarts from 'echarts'
-import resize from './mixins/resize'
+
 
 export default {
-  mixins: [resize],
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    id: {
-      type: String,
-      default: 'chart'
-    },
-    width: {
-      type: String,
-      default: '200px'
-    },
-    height: {
-      type: String,
-      default: '200px'
+  data(){
+    return{
+      saveSuccessful:true
     }
   },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    // this.initChart()
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
-  },
-  methods: {
 
+  methods:{
+    submit(){
+      console.log("向服务器提交修改后的管理员信息")
+    }
   }
+
+
 }
 </script>
 
 <style>
 
+  *{
+    margin: 0;
+  }
+
   .mainpart{
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +65,7 @@ export default {
   }
 
   .title{
-
+    height: 4.38rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -95,11 +86,11 @@ export default {
     line-height: 48px;
   }
 
-  .title >span:last-child{
+  .btn1{
     margin-right: 2.3rem;
     font-family: PingFangSC-Regular;
     font-size: 0.7rem;
-    color: #000000;
+    color: #fff;
     letter-spacing: 0;
     text-align: center;
     line-height: 19px;
@@ -108,6 +99,7 @@ export default {
     align-items: center;
     justify-content: center;
     width: 6rem;
+    height: 1.6rem;
     border-radius: 1.2rem;
   }
 
@@ -118,6 +110,8 @@ export default {
     margin-bottom: 1rem;
   }
  .content{
+   height: 85%;
+   margin-bottom: 1.5rem;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -143,23 +137,36 @@ export default {
   }
 
   .content >div:first-child>p>span{
-    width:3rem;
+    width:5vm;
     height: 2rem;
     margin-left: 2.7rem;
     margin-right:1.1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    font-weight: bold;
+    font-family: PingFangSC-Regular;
+    font-size: 0.8rem;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: right;
   }
 
   input{
+    width:68vw;
     height: 2rem;
     padding-left: 1rem;
     border: 1px solid #C6CBD4;
     border-radius: 20px;
   }
 
+  .content >div:last-child>span:first-child{
+    width:5vw;
+    background-color: brown;
+  }
+
   .savebtn{
+    margin-left: 3.7rem;   /*如何对齐这个按钮？？？？*/
     width: 7.5rem;
     height: 2rem;
     background: #4B74FF;
@@ -167,7 +174,34 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    color:#fff;
   }
+
+  .msg{
+    position:absolute;
+    top:15.75rem;
+  }
+
+  .msg div{
+    background: rgba(51,51,51,0.50);
+    width: 15rem;
+    height: 3rem;
+    background: rgba(51,51,51,0.50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: PingFangSC-Regular;
+    font-size: 1rem;
+    color: #FFFFFF;
+    letter-spacing: 0;
+  }
+
+  .msg div:first-child{
+    margin-bottom: 0.95rem;
+  }
+
+
+
 
 
 </style>

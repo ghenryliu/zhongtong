@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Chart from '@/components/Charts/mixChart'
+import Chart from '@/components/Charts/modifyPsw'
 
 export default {
-  name: 'MixChart',
+  name: 'PersonalCenter',
   components: { Chart }
 }
 </script>
@@ -24,7 +24,9 @@ export default {
 .chart-container{
   position: relative;
   width: 100%;
+  height: 100vh;
   /*height: calc(100vh - 84px);*/
+  background-color: yellow;
 }
 
 </style>
