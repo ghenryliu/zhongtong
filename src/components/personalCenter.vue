@@ -4,15 +4,15 @@
     <span>个人中心</span>
 
     <router-link :to="'/zhongtong/editAdmin/'">
-        <span class="btn1">修改密码</span>
+        <span class="btn1" >修改密码</span>
     </router-link>
   </div>
   <div class="empty"></div>
   <div class="content">
     <div>
-      <p><span>账号</span><input placeholder="example@163.com"/></p>
-      <p><span>用户名</span><input placeholder="请输入用户名"/></p>
-      <p><span>手机号</span><input placeholder="请输入手机号"/></p>
+      <p><span>账号</span><input type="text" placeholder="example@163.com" value=""  v-model="account"/></p>
+      <p><span>用户名</span><input type="text" placeholder="请输入用户名" value="" v-model="userName"/></p>
+      <p><span>手机号</span><input type="number" placeholder="请输入手机号" value="" v-model="phoneNo"/></p>
     </div>
     <div><span></span><span class="savebtn" @click="submit">保存</span></div>
   </div>
@@ -27,13 +27,18 @@ export default {
 
   data(){
     return{
-      saveSuccessful:true
+      saveSuccessful:true,
+      account:"",
+      userName:"",
+      phoneNo:"",
+
+
     }
   },
 
   methods:{
     submit(){
-      console.log("将数据保存至服务器")
+      console.log("将数据保存至服务器",this.account,this.userName,this.phoneNo)
     }
   }
 

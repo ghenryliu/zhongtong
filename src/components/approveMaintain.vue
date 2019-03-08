@@ -12,12 +12,12 @@
       <p><span>公司名称</span><span>{{companyName}}</span></p>
       <p><span>企业识别码</span><span>{{companyId}}</span></p>
     </div>
-    <div><span>通过</span><span>不通过</span></div>
+    <div><span @click="submit">通过</span><span @click="showFillReason">不通过</span></div>
   </div>
 
-  <div v-if="isApprove" class="notapprove">
+  <div v-if="isDisplay" class="notapprove">
     <input placeholder="请输入不通过原因"/>
-    <div><span>确定</span><span>取消</span></div>
+    <div><span @click="saveReason">确定</span><span @click="cancelSave">取消</span></div>
   </div>
 
   <div v-if="isApprove">审核通过
@@ -39,7 +39,7 @@ export default {
 
   data(){
     return{
-    isApprove:true,
+    isDisplay:false,
       name:"张亚东",
       id:'347648298574638391',
       companyName:'航宇科技',
@@ -49,9 +49,23 @@ export default {
 
   methods: {
     submit() {
-      console.log("将数据保存至服务器")
+      console.log("将维修人员数据保存至服务器")
+    },
+    showFillReason(){
+      this.isDisplay=true
+      console.log("请输入不通过原因")
+
+    },
+
+    saveReason(reason){
+      console.log("提交不通过的原因至服务器",reason)
+
+    },
+    cancelSave(){
+        this.isDisplay=false
+      }
     }
-  }
+
 
 }
 </script>
@@ -231,7 +245,10 @@ export default {
   }
 
   .notapprove>div>span{
-    width:3.7rem
+    width:3.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .notapprove>div>span:first-child{
