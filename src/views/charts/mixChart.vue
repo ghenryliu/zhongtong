@@ -1,31 +1,31 @@
-<template>
-  <div class="chart-container">
-    <chart height="100%" width="100%"/>
-  </div>
-</template>
+<!--<template>-->
+  <!--<div class="chart-container">-->
+    <!--<chart height="100%" width="100%"/>-->
+  <!--</div>-->
+<!--</template>-->
 
-<script>
-import Chart from '@/components/Charts/mixChart'
+<!--<script>-->
+<!--import Chart from '@/components/Charts/mixChart'-->
 
-export default {
-  name: 'MixChart',
-  components: { Chart }
-}
-</script>
+<!--export default {-->
+  <!--name: 'MixChart',-->
+  <!--components: { Chart }-->
+<!--}-->
+<!--</script>-->
 
-<style scoped>
-/*.chart-container{*/
-  /*position: relative;*/
-  /*width: 100%;*/
-  /*height: calc(100vh - 84px);*/
-/*}*/
+<!--<style scoped>-->
+<!--/*.chart-container{*/-->
+  <!--/*position: relative;*/-->
+  <!--/*width: 100%;*/-->
+  <!--/*height: calc(100vh - 84px);*/-->
+<!--/*}*/-->
 
-/*修改为*/
-.chart-container{
-  position: relative;
-  width: 100%;
-  /*height: calc(100vh - 84px);*/
-}
+<!--/*修改为*/-->
+<!--.chart-container{-->
+  <!--position: relative;-->
+  <!--width: 100%;-->
+  <!--/*height: calc(100vh - 84px);*/-->
+<!--}-->
 
-</style>
+<!--</style>-->
 

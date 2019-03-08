@@ -2,14 +2,14 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader')     //zt origin
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
+const createLintingRule = () => ({                   //zt origin
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
   enforce: 'pre',
@@ -18,7 +18,7 @@ const createLintingRule = () => ({
     formatter: require('eslint-friendly-formatter'),
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
-})
+})                                                     //zt origin
 
 module.exports = {
   context: path.resolve(__dirname, '../'),

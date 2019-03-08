@@ -77,6 +77,8 @@ export default {
     logIn: 'Log in/登录',
     username: 'Username',
     password: 'Password',
+    account:'adminxxx',
+    pwd:'admin',
     any: 'any',
     thirdparty: 'Or connect with',
     thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'

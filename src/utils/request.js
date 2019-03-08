@@ -5,18 +5,22 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api 的 base_url
+  // baseURL: process.env.BASE_API, // api 的 base_url
+
+  baseURL:'http://repairmgr.indoorun.com',
+
   timeout: 5000 // request timeout
 })
 
 // request interceptor
 service.interceptors.request.use(
   config => {
-    // Do something before request is sent
-    if (store.getters.token) {
-      // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
-      config.headers['X-Token'] = getToken()
-    }
+    console.log("请求...")
+    //Do something before request is sent
+    // if (store.getters.token) {                                                 //zt
+    //   // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
+    //   config.headers['X-Token'] = getToken()
+    //}                                                                            //zt
     return config
   },
   error => {
@@ -28,7 +32,17 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
-  response => response,
+
+  // response => response,  //Zt
+
+  response=>{
+    console.log('返回',response)
+    return response
+  },
+
+
+
+
   /**
    * 下面的注释为通过在response里，自定义code来标示请求状态
    * 当code返回如下情况则说明权限有问题，登出并返回到登录页
@@ -74,3 +88,82 @@ service.interceptors.response.use(
 )
 
 export default service
+
+
+
+
+
+// import axios from 'axios'
+//
+// // create an axios instance
+// const service = axios.create({
+//   //baseURL: process.env.BASE_API, // api的base_url
+//
+//   baseURL:'http://repair.indoorun.com',
+//
+//
+//   // baseURL:window.configUrls.requestUrls,
+//   timeout: 60000 // request timeout
+// })
+//
+// service.interceptors.request.use(config => {
+//
+//   console.log('请求', config)
+//
+//   return config
+//
+// }, error => {
+//
+//   console.log(error)
+//
+//   Promise.reject(error)
+// })
+//
+// // respone interceptor
+// service.interceptors.response.use(
+//   response => {
+//
+//     console.log('返回', response.data)
+//
+//     const {msg,code,data} = response.data
+//
+//     // console.log(msg)
+//     // console.log(code)
+//     // console.log(data)
+//
+//     // if (response.data.hasOwnProperty('userId')) {
+//     //   return response.data.userId
+//     // }
+//
+//     // if(!userId ){
+//     //   return userId
+//     // }
+//
+//
+//     if (code === 0) {    //使用0 和使用'0' 有区别
+//       //console.log("heh",response.data)
+//       return response.data
+//     }
+//     if (code===901){
+//       const getOpenidUrl = response.data.getOpenidUrl
+//       console.log("abc>>>>>>>>>>",getOpenidUrl)
+//       return {
+//         url:getOpenidUrl,
+//         code:901
+//       }
+//     }
+//     return Promise.reject(msg)
+//   },
+//   error => {
+//     console.log('err' + error)// for debug
+//     return Promise.reject(error)
+//   })
+//
+// export default service
+
+
+
+
+
+
+

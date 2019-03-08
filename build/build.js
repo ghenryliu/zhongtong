@@ -8,12 +8,16 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
-var connect = require('connect')
-var serveStatic = require('serve-static')
 
-const spinner = ora(
-  'building for ' + process.env.env_config + ' environment...'
-)
+var connect = require('connect')                                  //zt origin
+var serveStatic = require('serve-static')                         //zt origin
+
+const spinner = ora(                                              //zt origin
+  'building for ' + process.env.env_config + ' environment...'    //zt origin
+)                                                                 //zt origin
+
+const spinner = ora('building for production...')   //ptct
+
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
@@ -44,7 +48,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       )
     )
 
-    if (process.env.npm_config_preview) {
+    if (process.env.npm_config_preview) {                       //Zt
       const port = 9526
       const host = 'http://localhost:' + port
       const basePath = config.build.assetsPublicPath
@@ -62,6 +66,6 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
           chalk.green(`> Listening at  http://localhost:${port}${basePath}`)
         )
       })
-    }
+    }                                                        //ZT
   })
 })

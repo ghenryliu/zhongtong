@@ -18,15 +18,17 @@
         <!--</h3>-->
         <!--<lang-select class="set-language" />-->
         <!--</div>-->
+        <div>{{$t('login.pwd')}}</div>
 
         <el-form-item prop="username">
           <el-input
-            v-model="loginForm.username"
+            v-model="loginForm.account"
             :placeholder="$t('login.username')"
             name="username"
             type="text"
             auto-complete="on"
           />
+
           <span class="svg-container">
             <svg-icon icon-class="user" />
           <!--加小人-->
@@ -37,7 +39,7 @@
         <el-form-item prop="password">
 
           <el-input
-            v-model="loginForm.password"
+            v-model="loginForm.pwd"
             :type="passwordType"
             :placeholder="$t('login.password')"
             name="password"
@@ -94,6 +96,10 @@ import { validUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
 import SocialSign from './socialsignin'
 
+
+
+
+
 export default {
   name: 'Login',
   components: { LangSelect, SocialSign },
@@ -106,7 +112,7 @@ export default {
       }
     }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
+      if (value.length < 4) {
         callback(new Error('The password can not be less than 6 digits'))
       } else {
         callback()
@@ -115,8 +121,10 @@ export default {
     return {
       pswPass: true,
       loginForm: {
-        username: 'admin',
-        password: '1111111'
+        // username: 'admin',
+        // password: '11111111111111111111111',
+        account:'admin',
+        pwd:'admin'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -136,12 +144,12 @@ export default {
       immediate: true
     }
   },
-  created() {
-    // window.addEventListener('hashchange', this.afterQRScan)
-  },
-  destroyed() {
-    // window.removeEventListener('hashchange', this.afterQRScan)
-  },
+  // created() {
+  //   // window.addEventListener('hashchange', this.afterQRScan)
+  // },
+  // destroyed() {
+  //   // window.removeEventListener('hashchange', this.afterQRScan)
+  // },
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
@@ -151,13 +159,22 @@ export default {
       }
     },
     handleLogin() {
+
+      console.log("username&password",this.loginForm)
+      // loginByUsername1(this.loginForm)
+
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
+          console.log('success',valid)
           this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
+
             this.loading = false
-            this.$router.push({ path: this.redirect || '/' })
-          }).catch(() => {
+            console.log("go this way llll" ,this.loginFrom,this.redirect)
+            this.$router.push({ path:'generalCenter' })
+          })
+            .catch(() => {
+              console.log("go this way")
             this.loading = false
           })
         } else {
@@ -165,6 +182,27 @@ export default {
           return false
         }
       })
+
+
+
+
+
+
+
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     this.loading = true
+      //     this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
+      //       this.loading = false
+      //       this.$router.push({ path: this.redirect || '/' })
+      //     }).catch(() => {
+      //       this.loading = false
+      //     })
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
     },
     afterQRScan() {
       // const hash = window.location.hash.slice(1)
