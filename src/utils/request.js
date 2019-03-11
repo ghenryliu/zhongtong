@@ -15,7 +15,7 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    console.log("请求...")
+    console.log("请求...",config)
     //Do something before request is sent
     // if (store.getters.token) {                                                 //zt
     //   // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
@@ -25,7 +25,7 @@ service.interceptors.request.use(
   },
   error => {
     // Do something with request error
-    console.log(error) // for debug
+    console.log("error:>>>>",error) // for debug
     Promise.reject(error)
   }
 )

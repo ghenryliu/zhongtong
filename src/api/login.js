@@ -8,7 +8,7 @@ import request from '@/utils/request'
 //     //"pwd":password
 //   }
 //   return request({
-//     url: '/s/login',                //  /login/login
+//     url: '/login/login',                //  /login/login
 //     method: 'post',
 //     data
 //   })
@@ -30,12 +30,9 @@ export function getUserInfo(token) {
 }
 
 
-export function loginByUsername(data) {
-  // const data = {
-  //   account,
-  //   pwd
-  // }
-  console.log(">>>",data)
+export function loginByUsername(account,pwd) {
+  const data = "account="+account+"&pwd="+pwd
+  console.log(">>>loginByUsername>>>",data)
   return request({
     url: '/s/login',                //  /login/login
     method: 'post',

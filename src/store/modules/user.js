@@ -46,10 +46,14 @@ const user = {
   actions: {
     // 用户名登录
     LoginByUsername({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+      console.log("store>>>user>>>userInfor>>>",userInfo,userInfo.username,userInfo.account)
+
+      const account ="admin" //userInfo.account.trim()     //username  -->account
+      const pwd="admin"
       return new Promise((resolve, reject) => {
-        loginByUsername(username, userInfo.password).then(response => {
+        loginByUsername(account, pwd).then(response => {
           const data = response.data
+          console.log(data)
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
           resolve()

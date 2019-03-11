@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://repairmgr.indoorun.com',                   //         替换服务器地址  https://jparking.jslife.com.cn/  http://bjcf.indoorun.com
+        target: 'http://repairmgr.indoorun.com/',                   //         替换服务器地址  https://jparking.jslife.com.cn/  http://bjcf.indoorun.com
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -24,7 +24,7 @@ module.exports = {
     // can be overwritten by process.env.HOST
     // if you want dev by ip, please set host: '0.0.0.0'
     host: 'localhost',
-    port: 9527, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: false,
@@ -50,6 +50,7 @@ module.exports = {
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
+    cacheBusting: true,
     cssSourceMap: false
   },
 
@@ -73,7 +74,7 @@ module.exports = {
     /**
      * Source Maps
      */
-    productionSourceMap: false,
+    productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: 'source-map',
 
