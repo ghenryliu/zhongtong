@@ -8,7 +8,7 @@ export function isExternal(path) {
 
 export function validUsername(str) {
   const valid_map = ['admin', 'editor']
-  console.log("validate>>>validUsername",valid_map,"str>>>",str,valid_map.indexOf(str.trim()),valid_map.indexOf(str.trim()) >= 0,)
+  console.log("utils>>>validate>>>validUsername",valid_map,"str>>>",str,valid_map.indexOf(str.trim()),valid_map.indexOf(str.trim()) >= 0,)
   return valid_map.indexOf(str.trim()) >= 0
 }
 

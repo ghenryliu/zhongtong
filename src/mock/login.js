@@ -20,6 +20,7 @@ const userMap = {
 export default {
   loginByUsername: config => {
     const { username } = JSON.parse(config.body)
+    console.log("mock>>>login>>>username", username,userMap)
     return userMap[username]
   },
   getUserInfo: config => {

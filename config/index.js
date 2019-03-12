@@ -10,13 +10,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'http://repairmgr.indoorun.com/',                   //         替换服务器地址  https://jparking.jslife.com.cn/  http://bjcf.indoorun.com
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
+      // '/api': {
+      //   target: 'http://repairmgr.indoorun.com/',                   //         替换服务器地址  https://jparking.jslife.com.cn/  http://bjcf.indoorun.com
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/api': ''
+      //   }
+      // }
     },
 
     // Various Dev Server settings

@@ -20,71 +20,28 @@
         <!--</div>-->
         <div>{{$t('login.pwd')}}</div>
 
-        <!--<el-form-item prop="username">-->
-          <!--<el-input-->
-            <!--v-model="loginForm.username"-->
-            <!--:placeholder="$t('login.username')"-->
-            <!--name="username"-->
-            <!--type="text"-->
-            <!--auto-complete="on"-->
-          <!--/>-->
-          <!--<span class="svg-container">-->
-            <!--<svg-icon icon-class="user" />-->
-          <!--&lt;!&ndash;加小人&ndash;&gt;-->
-          <!--</span>-->
-
-        <!--</el-form-item>-->
-
-
-        <!--<el-form-item prop="password">-->
-
-          <!--<el-input-->
-            <!--v-model="loginForm.password"-->
-            <!--:type="passwordType"-->
-            <!--:placeholder="$t('login.password')"-->
-            <!--name="password"-->
-            <!--auto-complete="on"-->
-            <!--@keyup.enter.native="handleLogin"-->
-          <!--/>-->
-
-          <!--<span class="svg-container">-->
-            <!--<svg-icon icon-class="password"/>-->
-          <!--</span>-->
-        <!--&lt;!&ndash;<span class="show-pwd" @click="showPwd">&ndash;&gt;-->
-          <!--&lt;!&ndash;<svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--</el-form-item>-->
-
-
-
-
-
-
-
-
-
-        <el-form-item prop="account">
+        <el-form-item prop="username">
           <el-input
-            v-model="loginForm.account"
-            :placeholder="$t('login.account')"
+            v-model="loginForm.username"
+            :placeholder="$t('login.username')"
             name="username"
             type="text"
             auto-complete="on"
           />
           <span class="svg-container">
             <svg-icon icon-class="user" />
-            <!--加小人-->
+          <!--加小人-->
           </span>
 
         </el-form-item>
 
 
-        <el-form-item prop="pwd">
+        <el-form-item prop="password">
 
           <el-input
-            v-model="loginForm.pwd"
+            v-model="loginForm.password"
             :type="passwordType"
-            :placeholder="$t('login.pwd')"
+            :placeholder="$t('login.password')"
             name="password"
             auto-complete="on"
             @keyup.enter.native="handleLogin"
@@ -93,10 +50,53 @@
           <span class="svg-container">
             <svg-icon icon-class="password"/>
           </span>
-          <!--<span class="show-pwd" @click="showPwd">-->
+        <!--<span class="show-pwd" @click="showPwd">-->
           <!--<svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />-->
-          <!--</span>-->
+        <!--</span>-->
         </el-form-item>
+
+
+
+
+
+
+
+
+
+        <!--<el-form-item prop="account">-->
+          <!--<el-input-->
+            <!--v-model="loginForm.account"-->
+            <!--:placeholder="$t('login.account')"-->
+            <!--name="username"-->
+            <!--type="text"-->
+            <!--auto-complete="on"-->
+          <!--/>-->
+          <!--<span class="svg-container">-->
+            <!--<svg-icon icon-class="user" />-->
+            <!--&lt;!&ndash;加小人&ndash;&gt;-->
+          <!--</span>-->
+
+        <!--</el-form-item>-->
+
+
+        <!--<el-form-item prop="pwd">-->
+
+          <!--<el-input-->
+            <!--v-model="loginForm.pwd"-->
+            <!--:type="passwordType"-->
+            <!--:placeholder="$t('login.pwd')"-->
+            <!--name="password"-->
+            <!--auto-complete="on"-->
+            <!--@keyup.enter.native="handleLogin"-->
+          <!--/>-->
+
+          <!--<span class="svg-container">-->
+            <!--<svg-icon icon-class="password"/>-->
+          <!--</span>-->
+          <!--&lt;!&ndash;<span class="show-pwd" @click="showPwd">&ndash;&gt;-->
+          <!--&lt;!&ndash;<svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />&ndash;&gt;-->
+          <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--</el-form-item>-->
 
 
 
@@ -157,7 +157,7 @@ export default {
   // components: { LangSelect, SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
-      console.log("对用户名进行验证",value,)
+      console.log("view>login>data>>对用户名进行验证",value,)
       if (!validUsername(value)) {
         callback(new Error('Please enter the correct user name'))
       } else {
@@ -165,7 +165,7 @@ export default {
       }
     }
     const validatePassword = (rule, value, callback) => {
-      console.log("对密码的长度进行验证",value,)
+      console.log("view>login>data>>对密码的长度进行验证",value,)
       if (value.length < 4) {
         console.log("password value",value)
 
@@ -183,17 +183,17 @@ export default {
     return {
       pswPass: true,
       loginForm: {
-        // username: 'admin',
-        // password: '111112',
-        account:'admin',
-        pwd:'admin'
+        username: 'admin',
+        password: '111112',
+        // account:'admin',
+        // pwd:'admin'
       },
       loginRules: {
-        // username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        // password: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }],
 
-        account: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        pwd: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        // account: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        // pwd: [{ required: true, trigger: 'blur', validator: validatePassword }],
       },
       passwordType: 'password',
       loading: false,
@@ -227,7 +227,8 @@ export default {
 
     handleLogin() {
 
-      console.log("username&password",this.loginForm)
+      console.log("view>login>afterclick>>>username&password",this.loginForm)
+
       // loginByUsername1(this.loginForm)
 
       // this.$refs.loginForm.validate(valid => {
@@ -257,19 +258,24 @@ export default {
 
 
       this.$refs.loginForm.validate(valid => {
-        console.log("valid",valid,"对服务器进行登录请求...")
+        console.log("this.$refs.loginForm.validate >>>对服务器进行登录请求...")
         if (valid) {
           this.loading = true
-          const data="account=admin&pwd=admin"
+          //const data="account="+this.loginForm.account+"&pwd="+this.loginForm.pwd
+          const data=this.loginForm    //定义数据
+          console.log("login>>>before dispatch>>>用户名密码符合要求:",data)
 
-          this.$store.dispatch('LoginByUsername', data).then(() => {
 
+
+          this.$store.dispatch('LoginByUsername', data).then(() => {           //this.loginForm
             this.loading = false
-            console.log("this.loginForm",this.loginForm,this.loading)
-            // this.$router.push({ path: this.redirect || '/' })
+            console.log("after dispatch....>>>",data)
+            this.$router.push({ path: this.redirect || '/' })
+            // this.$router.push({ path: 'zhongtong/personalCenter' })
+
             console.log("this.redirect",this.redirect)
           }).catch(() => {
-            console.log("loading false")
+            console.log("登录不成功loading false")
             this.loading = false
           })
         } else {
@@ -277,7 +283,7 @@ export default {
           return false
         }
       })
-      console.log("handleLogin>>>Totheend")
+      console.log("handleLogin>>>异步请求")
     },
     afterQRScan() {
       // const hash = window.location.hash.slice(1)

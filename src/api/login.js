@@ -1,18 +1,18 @@
 import request from '@/utils/request'
 
-// export function loginByUsername(username,password) {
-//   const data = {
-//     username,
-//     //"account":username,
-//     password
-//     //"pwd":password
-//   }
-//   return request({
-//     url: '/login/login',                //  /login/login
-//     method: 'post',
-//     data
-//   })
-// }
+export function loginByUsername(username,password) {
+  const data = {
+    username,
+    //"account":username,
+    password
+    //"pwd":password
+  }
+  return request({
+    url: '/login/login',                //  /login/login
+    method: 'post',
+    data
+  })
+}
 
 export function logout() {
   return request({
@@ -30,13 +30,13 @@ export function getUserInfo(token) {
 }
 
 
-export function loginByUsername(account,pwd) {
-  const data = "account="+account+"&pwd="+pwd
-  console.log(">>>loginByUsername>>>",data)
-  return request({
-    url: '/s/login',                //  /login/login
-    method: 'post',
-    data
-  })
-}
+// export function loginByUsername(account,pwd) {
+//   const data = "account="+account+"&pwd="+pwd
+//   console.log("api>>>loginByUsername>>>",data)
+//   return request({
+//     url: '/s/login',                //  /login/login
+//     method: 'post',
+//     data:data,
+//   })
+// }
 

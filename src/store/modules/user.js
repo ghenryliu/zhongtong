@@ -1,19 +1,22 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
+
+
+
 const user = {
   state: {
-    user: '',
-    status: '',
-    code: '',
+    // user: '',
+    // status: '',
+    // code: '',
     token: getToken(),
-    name: '',
-    avatar: '',
-    introduction: '',
+    // name: '',
+    // avatar: '',
+    // introduction: '',
     roles: [],
-    setting: {
-      articlePlatform: []
-    }
+    // setting: {
+    //  articlePlatform: []
+    // }
   },
 
   mutations: {
@@ -23,21 +26,21 @@ const user = {
     SET_TOKEN: (state, token) => {
       state.token = token
     },
-    SET_INTRODUCTION: (state, introduction) => {
-      state.introduction = introduction
-    },
-    SET_SETTING: (state, setting) => {
-      state.setting = setting
-    },
-    SET_STATUS: (state, status) => {
-      state.status = status
-    },
-    SET_NAME: (state, name) => {
-      state.name = name
-    },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
-    },
+    // SET_INTRODUCTION: (state, introduction) => {
+    //   state.introduction = introduction
+    // },
+    // SET_SETTING: (state, setting) => {
+    //   state.setting = setting
+    // },
+    // SET_STATUS: (state, status) => {
+    //   state.status = status
+    // },
+    // SET_NAME: (state, name) => {
+    //   state.name = name
+    // },
+    // SET_AVATAR: (state, avatar) => {
+    //   state.avatar = avatar
+    // },
     SET_ROLES: (state, roles) => {
       state.roles = roles
     }
@@ -46,28 +49,50 @@ const user = {
   actions: {
     // 用户名登录
     LoginByUsername({ commit }, userInfo) {
-      console.log("store>>>user>>>userInfor>>>",userInfo,userInfo.username,userInfo.account)
+      console.log("store>>>user>>>actions>>>LoginByUsername>>>",userInfo,">>>",userInfo.username)
+      // const tmp=userInfo.split("&").slice(1).toString()
+      // console.log(tmp)
 
-      const account ="admin" //userInfo.account.trim()     //username  -->account
-      const pwd="admin"
+      const username=userInfo.username.trim()
+      const password=userInfo.password
+
+      //const account =userInfo.split("&").slice(0,1).toString().split("=").slice(1).toString() //userInfo.account.trim()     //username  -->account
+      //const pwd=userInfo.split("&").slice(1).toString().split("=").slice(1).toString()
+
+
+      //console.log("store>>>user>>>actions>>>LoginByUsername>>>",account,pwd)
+      console.log("store>>>user>>>actions>>>LoginByUsername>>>",username)
       return new Promise((resolve, reject) => {
-        loginByUsername(account, pwd).then(response => {
+        loginByUsername(username ,password).then(response => {               //username ,password   , account ,pwd
           const data = response.data
-          console.log(data)
-          commit('SET_TOKEN', data.token)
-          setToken(response.data.token)
+          console.log("user,js>>>loginByUserName>>>",data,data.token)
+
+
+          commit('SET_TOKEN', data.token)   //data.token
+          setToken(response.data.token)          //data.token
+
+
+
+          // commit('SET_CODE',data.code)
+          // console.log("??? data.code",data.code)
+
+
+
+          console.log(resolve)
           resolve()
         }).catch(error => {
+          console.log(error)
           reject(error)
         })
       })
     },
 
-    // 获取用户信息
+    //获取用户信息
     GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(response => {
           // 由于mockjs 不支持自定义状态码只能这样hack
+          console.log("user,js>>>getUSerInfor>>>respos",response)
           if (!response.data) {
             reject('Verification failed, please login again.')
           }
@@ -79,9 +104,9 @@ const user = {
             reject('getInfo: roles must be a non-null array!')
           }
 
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
-          commit('SET_INTRODUCTION', data.introduction)
+          // commit('SET_NAME', data.name)
+          // commit('SET_AVATAR', data.avatar)
+          // commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
         }).catch(error => {
           reject(error)
