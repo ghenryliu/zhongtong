@@ -1,6 +1,8 @@
 import { loginByUsername, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
+import {setCode } from '@/utils/auth'
+
 const user = {
   state: {
     user: '',
@@ -53,9 +55,17 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(account, pwd).then(response => {
           const data = response.data
-          console.log(data)
-          commit('SET_TOKEN', data.token)
-          setToken(response.data.token)
+          console.log("store>>>user.js>>",data.code)
+
+          // commit('SET_TOKEN', data.token)
+          // setToken(response.data.token)
+
+
+          commit('SET_CODE',data.code)
+          setCode(data.code)
+
+          commit('SET_ROLES', "admin")
+
           resolve()
         }).catch(error => {
           reject(error)
@@ -64,6 +74,12 @@ const user = {
     },
 
     // 获取用户信息
+
+
+
+
+
+
     GetUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(response => {
@@ -79,9 +95,9 @@ const user = {
             reject('getInfo: roles must be a non-null array!')
           }
 
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
-          commit('SET_INTRODUCTION', data.introduction)
+          // commit('SET_NAME', data.name)
+          // commit('SET_AVATAR', data.avatar)
+          // commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
         }).catch(error => {
           reject(error)
