@@ -12,48 +12,9 @@
           <div>硬件资产维修管理系统</div>
         </div>
 
-        <!--<div class="title-container">-->
-        <!--<h3 class="title">-->
-        <!--{{ $t('login.title') }}-->
-        <!--</h3>-->
-        <!--<lang-select class="set-language" />-->
-        <!--</div>-->
-        <div>{{$t('login.pwd')}}</div>
-
-        <!--<el-form-item prop="username">-->
-          <!--<el-input-->
-            <!--v-model="loginForm.username"-->
-            <!--:placeholder="$t('login.username')"-->
-            <!--name="username"-->
-            <!--type="text"-->
-            <!--auto-complete="on"-->
-          <!--/>-->
-          <!--<span class="svg-container">-->
-            <!--<svg-icon icon-class="user" />-->
-          <!--&lt;!&ndash;加小人&ndash;&gt;-->
-          <!--</span>-->
-
-        <!--</el-form-item>-->
 
 
-        <!--<el-form-item prop="password">-->
 
-          <!--<el-input-->
-            <!--v-model="loginForm.password"-->
-            <!--:type="passwordType"-->
-            <!--:placeholder="$t('login.password')"-->
-            <!--name="password"-->
-            <!--auto-complete="on"-->
-            <!--@keyup.enter.native="handleLogin"-->
-          <!--/>-->
-
-          <!--<span class="svg-container">-->
-            <!--<svg-icon icon-class="password"/>-->
-          <!--</span>-->
-        <!--&lt;!&ndash;<span class="show-pwd" @click="showPwd">&ndash;&gt;-->
-          <!--&lt;!&ndash;<svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />&ndash;&gt;-->
-        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-        <!--</el-form-item>-->
 
 
 
@@ -66,7 +27,7 @@
         <el-form-item prop="account">
           <el-input
             v-model="loginForm.account"
-            :placeholder="$t('login.account')"
+            placeholder="admin"
             name="username"
             type="text"
             auto-complete="on"
@@ -84,7 +45,7 @@
           <el-input
             v-model="loginForm.pwd"
             :type="passwordType"
-            :placeholder="$t('login.pwd')"
+            placeholder="admin"
             name="password"
             auto-complete="on"
             @keyup.enter.native="handleLogin"
@@ -109,34 +70,13 @@
         <div v-if="pswPass" class="psw"> 账号密码错误！请重试</div>
 
         <el-button :loading="loading" type="primary" style="width:80%;margin-bottom:30px;" @click.native.prevent="handleLogin">
-          {{ $t('login.logIn') }}
+          {{ ('login.logIn') }}
         </el-button>
 
-        <!--<div style="position:relative">-->
-      <!--<div class="tips">-->
-      <!--<span>{{ $t('login.username') }} : admin</span>-->
-      <!--<span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>-->
-        <!--</div>-->
-        <!--<div class="tips">-->
-      <!--<span style="margin-right:18px;">-->
-      <!--{{ $t('login.username') }} : editor-->
-      <!--</span>-->
-      <!--<span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>-->
-        <!--</div>-->
 
-        <!--<el-button class="thirdparty-button" type="primary" @click="showDialog=true">-->
-      <!--{{ $t('login.thirdparty') }}-->
-        <!--</el-button>-->
-      <!--</div>-->
       </el-form>
 
-    <!--<el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog">-->
-      <!--{{ $t('login.thirdpartyTips') }}-->
-      <!--<br>-->
-      <!--<br>-->
-      <!--<br>-->
-      <!--<social-sign />-->
-    <!--</el-dialog>-->
+
 
     </div>
   </div>
@@ -149,7 +89,9 @@ import { validUsername } from '@/utils/validate'
 // import SocialSign from './socialsignin'
 
 
+import {loginByUsername} from "../../api/login";
 
+import {setCookie} from "../../utils/cookie";
 
 
 export default {
@@ -180,6 +122,7 @@ export default {
 
 
 
+
     return {
       pswPass: true,
       loginForm: {
@@ -198,9 +141,19 @@ export default {
       passwordType: 'password',
       loading: false,
       showDialog: false,
-      redirect: undefined
+      redirect: undefined,
+      account:'',
     }
   },
+
+
+  // mounted(){
+  //   if(getCookie('account')){
+  //     this.$route.push('/dashboard')
+  //   }
+  // },
+
+
   watch: {
     $route: {
       handler: function(route) {
@@ -252,33 +205,54 @@ export default {
 
 
 
+      loginByUsername(this.loginForm.account,this.loginForm.pwd).then(
+        res=>{
+          console.log("返回的数据>>>",res.data)
 
-
-
-
-      this.$refs.loginForm.validate(valid => {
-        console.log("valid",valid,"对服务器进行登录请求...")
-        if (valid) {
-          this.loading = true
-          const data="account=admin&pwd=admin"
-
-          this.$store.dispatch('LoginByUsername', data).then(() => {
-
-            this.loading = false
-            console.log("this.loginForm",this.loginForm,this.loading)
-            // this.$router.push({ path: this.redirect || '/' })
-            console.log("this.redirect",this.redirect)
-          }).catch(() => {
-            console.log("loading false")
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!  ,The submit is error')
-          return false
-        }
+          if (res.data.code===0){
+            // this.$router.push('/zhongtong/personal')
+            setCookie('account',this.loginForm.account,1000*60)
+            setTimeout(function(){
+              this.$router.push('/zhongtong/personalCenter')}
+                .bind(this),1000)
+          }
       })
-      console.log("handleLogin>>>Totheend")
+
+
+
+
+
+
+
+      // this.$refs.loginForm.validate(valid => {
+      //   console.log("this.$refs.loginForm.validate,对服务器进行登录请求...")
+      //   if (valid) {
+      //     this.loading = true
+      //     const data="account=admin&pwd=admin"
+      //
+      //     this.$store.dispatch('LoginByUsername', data).then(() => {
+      //
+      //       this.loading = false
+      //       console.log("this.loginForm",this.loginForm,this.loading)
+      //       // this.$router.push({ path: this.redirect || '/' })
+      //       console.log("this.redirect",this.redirect)
+      //     }).catch(() => {
+      //       console.log("loading false")
+      //       this.loading = false
+      //     })
+      //   } else {
+      //     console.log('error submit!!  ,The submit is error')
+      //     return false
+      //   }
+      // })
+      // console.log("handleLogin>>>Totheend")
+
+
+
     },
+
+
+
     afterQRScan() {
       // const hash = window.location.hash.slice(1)
       // const hashObj = getQueryObject(hash)

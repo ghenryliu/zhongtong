@@ -1,8 +1,7 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
+  <div  class="app-wrapper">
     <!--<div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>-->
     <!--<sidebar class="sidebar-container"/>-->
-
     <!--<div class="main-container">-->
       <split-pane :min-percent='10' :default-percent='15' split="vertical" @resize="resize">
         <!--1  @resize="resize"-->
@@ -26,9 +25,9 @@
 </template>
 
 <script>
-  import { Navbar, Sidebar, AppMain, TagsView } from './components'
+  import { Navbar, AppMain} from './index'
   import ResizeMixin from './mixin/ResizeHandler'
-  import SplitPane from "vue-splitpane/src/split-pane/index";
+  // import SplitPane from "vue-splitpane/src/split-pane/index";
 
   import splitPane from 'vue-splitpane'
 
@@ -36,33 +35,15 @@
     name: 'Layout',
     components: {
       splitPane,
-      SplitPane,
+      // SplitPane,
       Navbar,
-      Sidebar,
+      //Sidebar,
       AppMain,
-      TagsView
+      //TagsView
     },
     mixins: [ResizeMixin],
-    computed: {
-      sidebar() {
-        return this.$store.state.app.sidebar
-      },
-      device() {
-        return this.$store.state.app.device
-      },
-      classObj() {
-        return {
-          hideSidebar: !this.sidebar.opened,
-          openSidebar: this.sidebar.opened,
-          withoutAnimation: this.sidebar.withoutAnimation,
-          mobile: this.device === 'mobile'
-        }
-      }
-    },
+
     methods: {
-      handleClickOutside() {
-        this.$store.dispatch('closeSideBar', { withoutAnimation: false })
-      },
       resize() {
         console.log('resize')
       }
@@ -91,7 +72,6 @@
     height: 100%;
     position: absolute;
     z-index: 999;
-
   }
 
 

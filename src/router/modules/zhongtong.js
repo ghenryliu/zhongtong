@@ -12,30 +12,11 @@ const zhongtongRouter = {
     icon: 'zhongtong'
   },
   children: [
-    // {
-    //   path: 'keyboard',
-    //   component: () => import('@/views/charts/keyboard'),
-    //   name: 'KeyboardChart',
-    //   meta: { title: 'keyboardChart', noCache: true }
-    // },
-    // {
-    //   path: 'line',
-    //   component: () => import('@/views/charts/line'),
-    //   name: 'LineChart',
-    //   meta: { title: 'lineChart', noCache: true }
-    // },
-    // {
-    //   path: 'mixchart',
-    //   component: () => import('@/views/charts/mixChart'),
-    //   name: 'MixChart',
-    //   meta: { title: 'mixChart', noCache: true }
-    // },
-
     {
       path: 'personalCenter',
       component: () => import('@/views/zhongtong/personalCenter'),
       name: 'personalCenter',
-      meta: { title: 'personalCenter', noCache: true }
+      // meta: { title: 'personalCenter', noCache: true }
     },
 
     {

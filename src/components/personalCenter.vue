@@ -22,8 +22,11 @@
 </template>
 <script>
 
+  import {getCookie} from "../utils/cookie";
 
-export default {
+  export default {
+
+
 
   data(){
     return{
@@ -33,11 +36,21 @@ export default {
       phoneNo:"",
 
 
-    }
-  },
+      }
+    },
 
-  methods:{
-    submit(){
+    mounted(){
+    console.log("???")
+    let uname=getCookie('account')
+      console.log("uname>>>",uname)
+      this.account=uname
+      if(uname==""){
+      this.$router.push('/')
+      }
+    },
+
+    methods:{
+      submit(){
       console.log("将数据保存至服务器",this.account,this.userName,this.phoneNo)
     }
   }
