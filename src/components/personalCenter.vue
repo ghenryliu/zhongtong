@@ -288,7 +288,7 @@
 
 
   .formcontent > p > span:first-child {
-  width: 5vw;
+  width: 8vw;
   /*min-width:3rem;*/
   height: 2rem;
   margin-left: 2.7rem;
@@ -321,7 +321,7 @@
 
   .el-input__inner{
     border: none;
-    width: 65vw; /*使用vw 来进行自适应*/
+    width: 60vw; /*使用vw 来进行自适应*/
     height: 2rem;
     padding-left: 1rem;
     border: 1px solid #C6CBD4;
