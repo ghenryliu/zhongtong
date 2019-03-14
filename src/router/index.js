@@ -13,7 +13,7 @@ import Layout from '@/views/layout/Layout'
 // import nestedRouter from './modules/nested'
 
 
-import zhongtongRouter from './modules/zhongtong'
+import zhongtongRouter from './zhongtong'
 
 
 
@@ -42,7 +42,7 @@ import zhongtongRouter from './modules/zhongtong'
 export const constantRouterMap = [
   {
     path: '/', // 主页面
-    component: () => import('@/views/login/index'),
+    component: () => import('@/views/login'),
     hidden: true
   },
   zhongtongRouter,
@@ -50,8 +50,14 @@ export const constantRouterMap = [
 
 export default new Router({
   // mode: 'history', // require service support
+
+
+
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
+
+
+
 })
 
 

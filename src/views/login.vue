@@ -123,7 +123,7 @@ export default {
             // this.$router.push('/zhongtong/personal')
             setCookie('account',this.loginForm.account,1000*60)
             setTimeout(function(){
-              this.$router.push('/zhongtong/personalCenter')}
+              this.$router.push('/personalCenter')}
                 .bind(this),1000)
           }
           else{

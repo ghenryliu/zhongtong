@@ -17,7 +17,6 @@ export function open() {
     spinnerType: 'fading-circle'
   });
 }
-
 export function close() {
 
   Indicator.close()

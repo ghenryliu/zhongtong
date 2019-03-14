@@ -26,7 +26,7 @@
 
 <script>
   import { Navbar, AppMain} from './index'
-  import ResizeMixin from './mixin/ResizeHandler'
+  //import ResizeMixin from './mixin/ResizeHandler'
   // import SplitPane from "vue-splitpane/src/split-pane/index";
 
   import splitPane from 'vue-splitpane'
@@ -41,7 +41,7 @@
       AppMain,
       //TagsView
     },
-    mixins: [ResizeMixin],
+    //mixins: [ResizeMixin],
 
     methods: {
       resize() {

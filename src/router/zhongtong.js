@@ -23,49 +23,49 @@ const zhongtongRouter = {
       path: 'modifyPsw',
       component: () => import('@/views/modifyPsw'),
       name: 'modifyPsw',
-      meta: { title: 'modifyPsw', noCache: true }
+      //meta: { title: 'modifyPsw', noCache: true }
     },
 
     {
       path: 'adminList',
       component: () => import('@/views/adminList'),
       name: 'adminList',
-      meta: { title: 'adminList', noCache: true }
+      // meta: { title: 'adminList', noCache: true }
     },
 
     {
       path: 'addAdmin',
       component: () => import('@/views/addAdmin'),
       name: 'addAdmin',
-      meta: { title: 'addAdmin', noCache: true }
+      // meta: { title: 'addAdmin', noCache: true }
     },
 
     {
       path: 'editAdmin',
       component: () => import('@/views/editAdmin'),
       name: 'editAdmin',
-      meta: { title: 'editAdmin', noCache: true }
+      // meta: { title: 'editAdmin', noCache: true }
     },
 
     {
       path: 'maintainList',
       component: () => import('@/views/maintainList'),
       name: 'maintainList',
-      meta: { title: 'maintainList', noCache: true }
+      // meta: { title: 'maintainList', noCache: true }
     },
 
     {
       path: 'approveMaintain',
       component: () => import('@/views/approveMaintain'),
       name: 'maintainList',
-      meta: { title: 'maintainList', noCache: true }
+      // meta: { title: 'maintainList', noCache: true }
     },
 
     {
       path: 'approveMaintainDetail',
       component: () => import('@/views/approveMaintainDetail'),
       name: 'approveMaintainDetail',
-      meta: { title: 'approveMaintainDetail', noCache: true }
+      // meta: { title: 'approveMaintainDetail', noCache: true }
     },
 
 
