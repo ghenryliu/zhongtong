@@ -31,54 +31,64 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-// import Hamburger from '@/components/Hamburger'     //用于弹出   左边的  弹出列表框
-// import Breadcrumb from '@/components/Breadcrumb'   //  拿到  "dashboard"
-// import ErrorLog from '@/components/ErrorLog'
-// import Screenfull from '@/components/Screenfull'
-// import SizeSelect from '@/components/SizeSelect'
-// import LangSelect from '@/components/LangSelect'
-// import ThemePicker from '@/components/ThemePicker'    //选择主题
-import Search from '@/components/HeaderSearch'
+
+
+import { setCookie,getCookie,delCookie } from  "@/utils/cookie";
+import { Logout } from '@/api/login'
 
 export default {
 
   data(){
     return{
-      displaySubMenu:true
+      displaySubMenu:true,
+      account:''
+    }
+  },
+
+  mounted(){
+    /*页面挂载获取保存的cookie值，渲染到页面上*/
+    if(this.isLogin==undefined || this.isLogin==""){
+      this.$router.replace('/')
+    }
+    else{
+      console.log("mounterd>>>???",this.isLogin)
+      this.account=getCookie('account')
     }
   },
 
 
-  components: {
-    //Breadcrumb,
-    //Hamburger,
-    //ErrorLog,
-    //Screenfull,
-    //SizeSelect,
-    //LangSelect,
-    //ThemePicker,
-    Search
-  },
-  computed: {
-    ...mapGetters([
-      'sidebar',
-      'name',
-      'avatar',
-      'device'
-    ])
-  },
+
+
   methods: {
-
-
-
 
     //新增：
     logout(){
-        this.$store.dispatch('LogOut').then(() => {
-          location.reload()// In order to re-instantiate the vue-router object to avoid bugs
-        })
+      Logout().then(
+        res => {
+        console.log("返回的数据>>>", res.data)
+        if(res.data.code===1){
+          Toasts("用户未登录或已过期，请重新登录！")
+          this.router.push({path:'/'})
+        }
+        else if(res.data.code===0){
+          Toasts("保存成功")
+        }
+      })
+
+
+
+
+      // delCookie("account")
+      // console.log("navbar>>>delccookie")
+      // let uname = getCookie('account')
+      // console.log("navbar>>>???")
+      // if(uname == ""){
+      //   this.$router.push('/')
+      // }
+
+
     },
+
     toggleSubMenu(){
       this.displaySubMenu==true? this.displaySubMenu=false:this.displaySubMenu=true
     },
@@ -86,11 +96,19 @@ export default {
     assetsmg(){
       this.displaySubMenu=false
     }
+  },
+
+  computed:{
+    isLogin(){
+      this.account=getCookie('account')
+      console.log("this.account",this.account)
+      return this.account
+    }
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss" >
 
   *{
     list-style: none;

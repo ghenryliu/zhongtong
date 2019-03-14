@@ -5,6 +5,8 @@
 </template>
 
 <script>
+
+  //用于 icon   的尺寸
 export default {
   name: 'SvgIcon',
   props: {

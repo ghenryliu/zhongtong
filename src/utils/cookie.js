@@ -21,7 +21,8 @@ export function getCookie(c_name){
       let c_end=document.cookie.indexOf(";",c_start)
       if (c_end==-1) c_end=document.cookie.length
 
-      console.log("cookie get cookie>>>")
+      console.log("cookie get cookie>>>",unescape(document.cookie.substring(c_start,c_end)),'>>>')
+
       return unescape(document.cookie.substring(c_start,c_end))
     }
   }
@@ -31,5 +32,6 @@ export function getCookie(c_name){
 
 /*删除cookie*/
 export function delCookie(c_name){
+  console.log("delCookie")
   setCookie(c_name, "", -1)
 }

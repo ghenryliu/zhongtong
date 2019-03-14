@@ -37,24 +37,17 @@ import zhongtongRouter from './modules/zhongtong'
     affix: true                  if true, the tag will affix in the tags-view
   }
 **/
+
+
 export const constantRouterMap = [
   {
-    path: '/login', // 主页面
+    path: '/', // 主页面
     component: () => import('@/views/login/index'),
     hidden: true
   },
   zhongtongRouter,
 ]
 
-
-// export const asyncRouterMap = [
-//
-//   zhongtongRouter,
-//
-//   { path: '*',
-//     redirect: '/404',
-//     hidden: true }
-//    ]
 export default new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
@@ -62,21 +55,3 @@ export default new Router({
 })
 
 
-
-// export default new Router({
-//   mode: 'history',
-//   scrollBehavior: () => ({ y: 0 }),
-//
-//   routes:[
-//
-//       {
-//       path: '/login', // 主页面
-//       component: () => import('@/views/login/index'),
-//       hidden: false
-//       }
-//
-//   ]
-//
-//
-//
-// })

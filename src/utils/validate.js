@@ -7,11 +7,22 @@ export function isExternal(path) {
 }
 
 export function validUsername(str) {
-  const valid_map = ['admin', 'editor']
-  console.log("validate>>>validUsername",valid_map,"str>>>",str,valid_map.indexOf(str.trim()),valid_map.indexOf(str.trim()) >= 0,)
-  return valid_map.indexOf(str.trim()) >= 0
+  var reg=/^[-_a-zA-Z0-9]{4,16}$/
+  return reg.test(str)
+
+
+
+  // const valid_map = ['admin', 'editor']
+  // console.log("validate>>>validUsername",valid_map,"str>>>",str,valid_map.indexOf(str.trim()),valid_map.indexOf(str.trim()) >= 0,)
+  // return valid_map.indexOf(str.trim()) >= 0
 }
 
+
+
+export function validPhone(num) {
+  var reg=/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+  return reg.test(num)
+}
 
 
 

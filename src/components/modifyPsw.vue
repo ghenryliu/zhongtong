@@ -1,11 +1,11 @@
 <template>
   <div class="mainpart">
     <div class="title">
-      <span>个人中心</span>
+      <span>修改密码</span>
 
-      <router-link :to="'/zhongtong/editAdmin/'">
-        <span class="btn1">修改密码</span>
-      </router-link>
+      <!--<router-link :to="'/zhongtong/editAdmin/'">-->
+        <!--<span class="btn1">修改密码</span>-->
+      <!--</router-link>-->
     </div>
     <div class="empty"></div>
 
@@ -13,11 +13,11 @@
              label-position="left">
       <!--<div class="content">-->
         <div class="formcontent">
-          <p><span>账号</span>
+          <p><span>原密码</span>
             <span>
-            <el-form-item prop="account">
+            <el-form-item prop="oldPwd">
               <el-input
-                v-model="loginForm.account"
+                v-model="loginForm.oldPwd"
                 placeholder="example@163.com"
                 name="account"
                 type="text"
@@ -25,11 +25,11 @@
             </el-form-item>
             </span>
           </p>
-          <p><span>用户名</span>
+          <p><span>新密码</span>
             <span>
-            <el-form-item prop="name">
+            <el-form-item prop="newPwd">
               <el-input
-                v-model="loginForm.name"
+                v-model="loginForm.newPwd"
                 placeholder="请输入账号用户名"
                 name="name"
                 type="text"
@@ -39,15 +39,15 @@
             </el-form-item>
               </span>
           </p>
-          <p><span>手机号</span>
+          <p><span>确认新密码</span>
             <span>
 
-            <el-form-item prop="phone">
+            <el-form-item prop="new2Pwd">
               <el-input
-                v-model="loginForm.phone"
+                v-model="loginForm.new2Pwd"
                 placeholder="请输入手机号码"
                 name="phone"
-                type="number"
+                type="text"
                 auto-complete="on"
               />
             </el-form-item>
@@ -65,48 +65,51 @@
 <script>
 
   import {getCookie} from "../utils/cookie";
-  import {validUsername, validPhone} from '@/utils/validate'
-  import {updatePersonalInfo} from "../api/login";
-
   import {Toasts, open, close} from '../mintUi';
+  import {modifyPwd} from "../api/login";
 
   export default {
     data() {
-      const validateUsername = (rule, value, callback) => {
-        console.log("对账号进行验证", value,)
-        if (!validUsername(value)) {
-          callback(new Error('请输入正确账号(4-16位字母数字下划线) '))
+      const validateOldPwd = (rule, value, callback) => {
+        console.log("对密码的长度进行验证",value,)
+        if (value.length < 6) {
+          console.log("password value",value)
+
+          callback(new Error('The password can not be less than 6 digits'))
         } else {
           callback()
         }
       }
-      const validateName = (rule, value, callback) => {
-        console.log("对用户名进行验证", value,)
-        if (!validUsername(value)) {
-          callback(new Error('请输入正确用户名(4-16位字母数字下划线) '))
+      const validateNewPwd = (rule, value, callback) => {
+        console.log("对密码的长度进行验证",value,)
+        if (value.length < 6) {
+          console.log("password value",value)
+
+          callback(new Error('The password can not be less than 6 digits'))
         } else {
           callback()
         }
       }
-      const validatePhone = (rule, value, callback) => {
-        console.log("对手机号进行验证", value,)
-        if (!validPhone(value)) {
-          console.log("password value", value)
-          callback(new Error('请输入正确手机号码'))
+      const validate2NewPwd = (rule, value, callback) => {
+        console.log("对密码的长度进行验证",value,)
+        console.log(value,this.loginForm.newPwd)
+        if (value!==this.loginForm.newPwd) {
+          console.log("password value",value)
+          callback(new Error('两次密码输入不一致,请重新输入'))
         } else {
           callback()
         }
       }
       return {
         loginForm: {
-          account: '',
-          name: '',
-          phone: ''
+          oldPwd: '',
+          newPwd: '',
+          new2Pwd: ''
         },
         loginRules: {
-          account: [{required: true, trigger: 'blur', validator: validateUsername}],
-          name: [{required: true, trigger: 'blur', validator: validateName}],
-          phone: [{required: true, trigger: 'blur', validator: validatePhone}],
+          oldPwd: [{required: true, trigger: 'blur', validator: validateOldPwd}],
+          newPwd: [{required: true, trigger: 'blur', validator: validateNewPwd}],
+          new2Pwd: [{required: true, trigger: 'blur', validator: validate2NewPwd}],
         },
         saveSuccessful: true,
         account: "",
@@ -130,21 +133,18 @@
       submit() {
         console.log("将数据保存至服务器", this.account, this.userName, this.phoneNo)
 
-        updatePersonalInfo(this.loginForm.account, this.loginForm.name, this.loginForm.phone).then(
+        modifyPwd(this.loginForm.oldPwd, this.loginForm.newPwd).then(
           res => {
             console.log("返回的数据>>>", res.data)
-            if(res.data.code===201){
+            if(res.data.code===1){
               Toasts("用户未登录或已过期，请重新登录！")
-              this.router.push({path:'/'})
+              this.$router.push({'path':'/'})
             }
             else if(res.data.code===0){
               Toasts("保存成功")
             }
-
           })
       }
-
-
     },
 
     computed:{

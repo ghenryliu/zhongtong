@@ -16,10 +16,10 @@ export default {
   },
   mounted() {
     const isMobile = this.isMobile()
-    if (isMobile) {
-      store.dispatch('toggleDevice', 'mobile')
-      store.dispatch('closeSideBar', { withoutAnimation: true })
-    }
+    // if (isMobile) {
+    //   store.dispatch('toggleDevice', 'mobile')
+    //   store.dispatch('closeSideBar', { withoutAnimation: true })
+    // }
   },
   methods: {
     isMobile() {
@@ -27,14 +27,14 @@ export default {
       return rect.width - 1 < WIDTH
     },
     resizeHandler() {
-      if (!document.hidden) {
-        const isMobile = this.isMobile()
-        store.dispatch('toggleDevice', isMobile ? 'mobile' : 'desktop')
+      // if (!document.hidden) {
+      //   const isMobile = this.isMobile()
+      //   store.dispatch('toggleDevice', isMobile ? 'mobile' : 'desktop')
 
-        if (isMobile) {
-          store.dispatch('closeSideBar', { withoutAnimation: true })
-        }
-      }
+        // if (isMobile) {
+        //   store.dispatch('closeSideBar', { withoutAnimation: true })
+        // }
+      //}
     }
   }
 }

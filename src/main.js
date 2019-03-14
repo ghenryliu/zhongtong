@@ -10,17 +10,16 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
 
 import App from './App'
-//import store from './store'
+
 import router from './router'
 
-//import i18n from './lang' // Internationalization  用于显示 $t('login.title')
+
 
 import './icons' // icon
 
-// import './mock' // simulation data
 
-//import * as filters from './filters' // global filters
-
+import Mint from 'mint-ui';     //import mint
+import 'mint-ui/lib/style.css';  //import mint
 
 
 
