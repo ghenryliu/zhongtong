@@ -18,7 +18,7 @@ import router from './router'
 import './icons' // icon
 
 
-import Mint from 'mint-ui';     //import mint
+import MintUi from 'mint-ui';     //import mint
 import 'mint-ui/lib/style.css';  //import mint
 
 

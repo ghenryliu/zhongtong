@@ -65,8 +65,8 @@
 </template>
 <script>
 
-  import {getCookie} from "../utils/cookie";
-  import {validUsername, validPhone} from '@/utils/validate'
+  import {getCookie} from "../api/cookie";
+  import {validUsername, validPhone} from '../api/validate'
   import {updatePersonalInfo} from "../api/login";
 
   import {Toasts, open, close} from '../mintUi';

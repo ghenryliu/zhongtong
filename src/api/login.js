@@ -1,7 +1,7 @@
-import request from '@/utils/request'
+import request from './request'
 
 
-
+//使用用户名登录
 export function loginByUsername(account,pwd) {
   const data = "account="+account+"&pwd="+pwd
   return request({
@@ -11,7 +11,7 @@ export function loginByUsername(account,pwd) {
   })
 }
 
-
+//登出
 export function Logout() {
   const data=""
   return request({

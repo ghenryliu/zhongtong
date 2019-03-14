@@ -64,7 +64,7 @@
 </template>
 <script>
 
-  import {getCookie} from "../utils/cookie";
+  import {getCookie} from "../api/cookie";
   import {Toasts, open, close} from '../mintUi';
   import {modifyPwd} from "../api/login";
 

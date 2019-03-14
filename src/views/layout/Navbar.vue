@@ -33,7 +33,7 @@
 <script>
 
 
-import { setCookie,getCookie,delCookie } from  "@/utils/cookie";
+import { setCookie,getCookie,delCookie } from  "@/api/cookie";
 import { Logout } from '@/api/login'
 
 export default {
