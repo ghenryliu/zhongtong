@@ -60,8 +60,8 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-import {loginByUsername} from "../../api/login";
-import {setCookie,getCookie} from "../../utils/cookie";
+import {loginByUsername} from "../api/login";
+import {setCookie,getCookie} from "../utils/cookie";
 
 
 

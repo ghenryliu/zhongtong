@@ -3,7 +3,7 @@
 import Layout from '@/views/layout/Layout'
 
 const zhongtongRouter = {
-  path: '/zhongtong',
+  path: '/',
   component: Layout,
   redirect: 'noredirect',
   name: 'zhongtong',
@@ -14,56 +14,56 @@ const zhongtongRouter = {
   children: [
     {
       path: 'personalCenter',
-      component: () => import('@/views/zhongtong/personalCenter'),
+      component: () => import('@/views/personalCenter'),
       name: 'personalCenter',
       // meta: { title: 'personalCenter', noCache: true }
     },
 
     {
       path: 'modifyPsw',
-      component: () => import('@/views/zhongtong/modifyPsw'),
+      component: () => import('@/views/modifyPsw'),
       name: 'modifyPsw',
       meta: { title: 'modifyPsw', noCache: true }
     },
 
     {
       path: 'adminList',
-      component: () => import('@/views/zhongtong/adminList'),
+      component: () => import('@/views/adminList'),
       name: 'adminList',
       meta: { title: 'adminList', noCache: true }
     },
 
     {
       path: 'addAdmin',
-      component: () => import('@/views/zhongtong/addAdmin'),
+      component: () => import('@/views/addAdmin'),
       name: 'addAdmin',
       meta: { title: 'addAdmin', noCache: true }
     },
 
     {
       path: 'editAdmin',
-      component: () => import('@/views/zhongtong/editAdmin'),
+      component: () => import('@/views/editAdmin'),
       name: 'editAdmin',
       meta: { title: 'editAdmin', noCache: true }
     },
 
     {
       path: 'maintainList',
-      component: () => import('@/views/zhongtong/maintainList'),
+      component: () => import('@/views/maintainList'),
       name: 'maintainList',
       meta: { title: 'maintainList', noCache: true }
     },
 
     {
       path: 'approveMaintain',
-      component: () => import('@/views/zhongtong/approveMaintain'),
+      component: () => import('@/views/approveMaintain'),
       name: 'maintainList',
       meta: { title: 'maintainList', noCache: true }
     },
 
     {
       path: 'approveMaintainDetail',
-      component: () => import('@/views/zhongtong/approveMaintainDetail'),
+      component: () => import('@/views/approveMaintainDetail'),
       name: 'approveMaintainDetail',
       meta: { title: 'approveMaintainDetail', noCache: true }
     },
