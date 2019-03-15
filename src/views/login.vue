@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+import {validUsername } from '../api/validate'
 import {loginByUsername} from "../api/login";
-import {setCookie,getCookie} from "../utils/cookie";
+import {setCookie,getCookie} from "../api/cookie";
 
 
 

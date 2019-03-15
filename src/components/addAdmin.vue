@@ -14,7 +14,8 @@
 
 
     <div class="plusremind">
-      <div><span>账号</span><p><input name="pwd" type="password" id="pwd4" size="10" placeholder="请输入账号" style="width:150px" /> <span v-if="isSame">原密码输入错误</span></p></div>
+      <div><span>账号</span><p>
+        <input name="pwd" type="password" id="pwd4" size="10" placeholder="请输入账号" style="width:150px" /> <span v-if="isSame">原密码输入错误</span></p></div>
       <div><span>用户名</span><p><input name="pwd"  id="pwd5" size="10" placeholder="请输入用户名" style="width:300px"/></p></div>
       <div><span>手机号</span><p><input name="pwd"  id="pwd6" size="10" placeholder="请输入手机号" style="width:170px"/></p></div>
       <div><span>密码</span><p><input name="pwd" type="password" id="pwd7" size="10" placeholder="请输入6-16位字母加数字的密码" style="width:170px"/></p></div>
