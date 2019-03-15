@@ -9,7 +9,8 @@ const service = axios.create({
 
   baseURL:'http://repairmgr.indoorun.com',
 
-  timeout: 5000 // request timeout
+  timeout: 5000, // request timeout
+  withCredentials: true
 })
 
 // request interceptor

@@ -116,12 +116,14 @@ export default {
     handleLogin() {
       //console.log("username&password",this.loginForm)
       // loginByUsername1(this.loginForm)
+
+      setCookie('account',this.loginForm.account,1000*60)
       loginByUsername(this.loginForm.account,this.loginForm.pwd).then(
         res=>{
           //console.log("返回的数据>>>",res.data)
           if (res.data.code===0){
             // this.$router.push('/zhongtong/personal')
-            setCookie('account',this.loginForm.account,1000*60)
+
             setTimeout(function(){
               this.$router.push('/personalCenter')}
                 .bind(this),1000)

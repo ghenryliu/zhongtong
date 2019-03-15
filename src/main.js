@@ -1,29 +1,16 @@
 import Vue from 'vue'
-
 import Cookies from 'js-cookie'
-
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
 import '@/styles/index.scss' // global css
-
 import App from './App'
-
 import router from './router'
-
-
-
 import './icons' // icon
-
-
 import MintUi from 'mint-ui';     //import mint
 import 'mint-ui/lib/style.css';  //import mint
-
-
-
 import Axios from  'axios'  //新增
+//Axios.defaults.withCredentials=true;//让ajax携带cookie
 Vue.prototype.$axios = Axios;
 
 
@@ -45,11 +32,5 @@ new Vue({
   router,
   //store,
   //i18n,
-
-
   render: h => h(App)
-
-
-
-
 })

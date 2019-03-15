@@ -17,8 +17,8 @@
       <input placeholder="请输入不通过原因"/>
       <div><span @click="saveReason">确定</span><span @click="cancelSave">取消</span></div>
     </div>
-    <div v-if="isApprove">审核通过
-    </div>
+    <!--<div v-if="isApprove">审核通过-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -30,7 +30,8 @@
         name: "张亚东",
         id: '347648298574638391',
         companyName: '航宇科技',
-        companyId: '36523659239823'
+        companyId: '36523659239823',
+        isApprove:false
       }
     },
     methods: {

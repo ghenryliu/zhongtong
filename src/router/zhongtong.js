@@ -57,7 +57,7 @@ const zhongtongRouter = {
     {
       path: 'approveMaintain',
       component: () => import('@/views/approveMaintain'),
-      name: 'maintainList',
+      name: 'approveMaintain',
       // meta: { title: 'maintainList', noCache: true }
     },
 
