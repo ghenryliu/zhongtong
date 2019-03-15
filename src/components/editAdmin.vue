@@ -1,9 +1,9 @@
 <template>
   <div class="mainpart">
     <div class="title">
-      <span>个人中心</span>
+      <span>编辑管理员信息</span>
       <router-link :to="'/modifyPsw/'">
-        <span class="btn1">修改密码</span>
+        <span class="btn1">重置密码</span>
       </router-link>
     </div>
     <div class="empty"></div>
@@ -177,6 +177,9 @@
     color: #333333;
     letter-spacing: 0;
     line-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn1 {

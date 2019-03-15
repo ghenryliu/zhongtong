@@ -12,6 +12,10 @@ export default{
 
 <style>
 
+  *{
+    border: none;
+  }
+
   #app{
     height: 100vh;
     width:100vw;
